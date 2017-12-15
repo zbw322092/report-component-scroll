@@ -1,0 +1,60 @@
+<section id="page">
+  <section data-markdown>
+    # Be BASIC
+  </section>
+  <section>Just thinking about, What is the core of scroll components, without reading any code?</section>
+  <section>Yes, it is SCROLL.</section>
+  <section>HOWEVER, You Guess What.</section>
+  <section>
+    Browsers can scroll automatically, we need do nothing. It is a truth everybody knows.
+  </section>
+  <section data-background-image="./assets/img-question-face.gif"></section>
+  <section>So, now the question is, Why we need scroll components?</section>
+  <section data-markdown>
+    Yes, sometimes, we need scroll to a specified postion! ( `y` 400px maybe )
+  </section>
+  <section>But, native method
+    <span class="code-text">window.scrollTo()</span> can deal with that.</section>
+  <section>
+    Well, but we need SMOOTH scroll!
+    <span class="code-text">window.scrollTo()</span> is not enough!
+  </section>
+
+  <section>
+    No, we have
+    <span class="code-text">smooth-behavior</span> css property can make scroll smoothly.
+    <pre>
+      <code data-trim data-noescape>
+        scroll-behavior: smooth;
+      </code>
+    </pre>
+  </section>
+
+  <section>
+    Ok, but, what about scrolling to a specified HTML element?
+  </section>
+  <section>
+    Also, native method can help us. It is <span class="code-text">Element.scrollIntoView()</span>
+
+    <pre>
+      <code data-trim data-noescape>
+          var element = document.getElementById("box");
+          
+          element.scrollIntoView();
+          element.scrollIntoView(false);
+          element.scrollIntoView({block: "end"});
+          element.scrollIntoView({behavior: "smooth", block: "end", inline: "nearest"});
+      </code>
+    </pre>
+
+    You can even config smooth scroll in <span class="code-text">Element.scrollIntoView()</span> method.
+  </section>
+  <section>
+    Now we know native methods will help us, are these method perfect?
+  </section>
+  <section>No</section>
+  <section>
+    COMPATIBILITY <br><br>
+    CUSTOMIZATION
+  </section>
+</section>

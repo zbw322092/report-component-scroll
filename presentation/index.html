@@ -8,6 +8,7 @@
 
 		<link rel="stylesheet" href="../css/reveal.css">
 		<link rel="stylesheet" href="../css/theme/black.css">
+		<link rel="stylesheet" href="./styles/common.css">
 
 		<!-- Theme used for syntax highlighting of code -->
     <link rel="stylesheet" href="../lib/css/zenburn.css">
@@ -15,6 +16,7 @@
 		<link rel="import" href="cover.html">
 		<link rel="import" href="topic-1.html">
 		<link rel="import" href="topic-2.html">
+		<link rel="import" href="topic-3.html">
     
 
 		<!-- Printing and PDF exports -->
@@ -55,11 +57,11 @@
 			function includeHtml (container) {
 				var docs = document.querySelectorAll('link[rel="import"]');
 				var docsLength = docs.length;
-				var i = 0, pages=[];
-				while (i < docsLength) {
+				var i = docsLength-1, pages=[];
+				while (i >= 0 ) {
 					var page = docs[i].import.querySelector('#page');
 					container.appendChild(page);
-					i++;
+					i--;
 				}
 			}
 
