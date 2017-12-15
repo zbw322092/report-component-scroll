@@ -1,0 +1,46 @@
+<section id="page">
+  <section data-markdown>
+    # COMPATIBILITY
+  </section>
+  <section>
+    First is the good part, <span class="code-text">window.scrollTo</span> and
+    <span class="code-text">window.scroll</span> have solid performance in browser compatibiliy. <br><br><br>
+    
+    <span data-markdown>_But no exact browser compatibiliy document found so far._</span>
+  </section>
+
+  <section>
+    Sadly, most of native scroll related properties do not has good browser compatibiliy.
+  </section>
+
+  <section>
+    <span class="code-text">scroll-behavior</span> is not support in all IE browsers, 
+    including IE Edge. Neither, all of the Safari, iOS Safari and Android webview browsers.
+  </section>
+
+  <section>
+    <span class="code-text">Element.scrollIntoView()</span> is wide BASICALLY support --
+    working in most of browsers, however, in lots of browsers the configuration options are 
+    not working.
+    <pre>
+      <code data-trim data-noescape>
+        // behavior: "smooth" option is not working in lots of browsers
+
+        element.scrollIntoView({behavior: "smooth"});          
+      </code>
+    </pre>
+    <a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollIntoView#Browser_compatibility">Check Details</a>
+  </section>
+
+  <section>
+    Method like <span class="code-text">Window.scrollByPages()</span>,
+    <span class="code-text">Window.scrollByLines()</span> are even not standard methods.
+
+    <div data-markdown>
+      > This feature is non-standard and is not on a standards track. Do not use it on 
+      production sites facing the Web: it will not work for every user.
+    </div> <br><br>
+    reference: <em>https://developer.mozilla.org/en-US/docs/Web/API/Window/scrollByPages</em>
+  </section>
+
+</section>

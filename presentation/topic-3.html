@@ -11,7 +11,7 @@
   <section data-background-image="./assets/img-question-face.gif"></section>
   <section>So, now the question is, Why we need scroll components?</section>
   <section data-markdown>
-    Yes, sometimes, we need scroll to a specified postion! ( `y` 400px maybe )
+    Yes, sometimes, we need scroll to a specified postion! ( `y` 400px perhaps )
   </section>
   <section>But, native method
     <span class="code-text">window.scrollTo()</span> can deal with that.</section>
@@ -49,10 +49,62 @@
 
     You can even config smooth scroll in <span class="code-text">Element.scrollIntoView()</span> method.
   </section>
-  <section>
-    Now we know native methods will help us, are these method perfect?
+
+  <section data-markdown>
+    Pretty solid so far. `iScroll` can help us "snap" scroll one page, 
+    what about browser itself.
   </section>
-  <section>No</section>
+
+  <section>
+    Browser also can handle it natively, by using <span class="code-text">Window.scrollByPages()</span> <br><br>
+    What's more, Browsers are able to scroll by lines using <span class="code-text">Window.scrollByLines()</span>
+  </section>
+
+  <section>
+    Great feature. Let's talking about "sticky" some element when scrolling, can browser handle
+    it natively?
+  </section>
+  <section>
+    Not surprisely, Browser can hanle it beautifully.<br><br>
+    <p data-height="350" data-theme-id="0" data-slug-hash="JbdJRZ" data-default-tab="html,result" data-user="simevidas" data-embed-version="2" data-pen-title="Sticky positioning" class="codepen">See the Pen 
+      <a href="https://codepen.io/simevidas/pen/JbdJRZ/">Sticky positioning</a> by Šime Vidas (<a href="https://codepen.io/simevidas">@simevidas</a>) on <a href="https://codepen.io">CodePen</a>.</p>
+    <script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
+
+    <div>
+      References:
+      <a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/CSS/position">[1]</a>position MDN <br>
+      <a target="_blank" href="https://developers.google.com/web/updates/2012/08/Stick-your-landings-position-sticky-lands-in-WebKit">[2]</a>Stick your landings! position: sticky lands in WebKit
+      <a target="_blank" href="https://developers.google.com/web/updates/2016/12/position-sticky">[3]</a>position:sticky is back in Chrome <br>
+      <a target="_blank" href="https://css-tricks.com/position-sticky-2/">[4]</a>CSS Tricks. position: sticky;
+    </div>
+  </section>
+
+  <section>
+    So far so good. Tell me more about browser native scroll related ability.
+  </section>
+
+  <section>
+    Well. Browsers are able to customise scroll bar. <br><br>
+    <p data-height="350" data-theme-id="0" data-slug-hash="BpggrZ" data-default-tab="css,result" data-user="akinjide" data-embed-version="2" data-pen-title="Customize the Browser's Scrollbar with CSS" class="codepen">
+        See the Pen <a href="https://codepen.io/akinjide/pen/BpggrZ/">Customize the Browser's Scrollbar with CSS</a> by akinjide (<a href="https://codepen.io/akinjide">@akinjide</a>) on <a href="https://codepen.io">CodePen</a>.</p>
+      <script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
+  </section>
+  <section>
+    References: <br>
+    <a target="_blank" href="https://scotch.io/tutorials/customize-the-browsers-scrollbar-with-css">[1]</a> Customize the Browser's Scrollbar with CSS <br>
+    <a target="_blank" href="https://css-tricks.com/custom-scrollbars-in-webkit/">[2]</a> Custom Scrollbars in WebKit <br>
+    <a target="_blank" href="https://webkit.org/blog/363/styling-scrollbars/">[3]</a> Styling Scrollbars <br>
+    <a target="_blank" href="https://css-tricks.com/almanac/properties/s/scrollbar/">[4]</a> CSS Tricks. scrollbar <br>
+    <a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/CSS/::-webkit-scrollbar">[5]</a> ::-webkit-scrollbar MDN<br>
+  </section>
+
+  <section>
+      Now we know native methods can help us a lot about scroll. <br>
+      Browser seem much stronger than we thought. right?<br>
+      However, are these functionalities work perfectly and can we forget 
+      things like iScroll?
+  </section>
+  <section>No. Because of...</section>
   <section>
     COMPATIBILITY <br><br>
     CUSTOMIZATION
