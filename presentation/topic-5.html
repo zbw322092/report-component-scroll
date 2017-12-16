@@ -2,7 +2,48 @@
   <section data-markdown>
     # CUSTOMIZATION
   </section>
+  <section data-markdown>
+    One principle we should follow is that, if native method is avaliable and fulfill 
+    our requirements perfectly, we should use it without any hesitation since native 
+    mathod has **_unmatchable proformance_** than the script snippets we written.
+  </section>
   <section>
+    DO NOT use custom scrollbars unless you know what you are doing. <br><br>
+
+    Customizing scrollbars is always a controversial issue. On the one hand, 
+    it provides full control of scrollbars. But on the other hand, it degrades user 
+    experience because native behavior is unmatchable. As the author of this script, 
+    I don't really want you to use it unless you are sure about what you are doing.<br><br>
     
+    -- Dolphin Wood, the author of <a target="_blank" href="https://github.com/idiotWu/smooth-scrollbar/blob/develop/docs/caveats.md">smooth-scrollbar</a>
+  </section>
+  <section>
+    However...
+  </section>
+  <section>
+    In lots of situation, we really need customized scroll behaviors that browser cannot 
+    provided natively.
+  </section>
+  <section>
+    For examples:
+  </section>
+  <section>
+    <span class="code-text">window.scrollTo()</span> is great, but if we would like "scroll to" 
+    behaviors happen within a specified container which is not the <span class="code-text">window</span> 
+    object. <span class="code-text">window.scrollTo()</span> cannot not help us.
+  </section>
+  <section>
+    <span class="code-text">Element.scrollIntoView()</span> works well, until we need element showing within 
+    viewport with some customized offsets.
+  </section>
+  <section>
+    <span class="code-text">scroll-behavior: smooth</span> is elegant, but we cannot customize 
+    detailed scroll behavior -- maybe we would like elements scroll quicker in first half distance, with 
+    slower scrolling speed during second half distance.
+  </section>
+  <section>
+    Also, scroll bar "momentum" scrolling style provided by <span class="code-text">-webkit-overflow-scrolling: touch</span> 
+    is monotonous. If we want longer momentum slow down distance, for example, we need the 
+    help of external scripts.
   </section>
 </section>
