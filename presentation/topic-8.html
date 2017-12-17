@@ -1,0 +1,49 @@
+<section id="page">
+  <section data-markdown>
+    ## Polyfill Libraries
+  </section>
+  <section data-markdown>
+    Imagining that, if we developing a PC frontend application, which just requires 
+    some  simple "smooth skip to" effect, it would be crazy to include the whole `iScroll` 
+    core build file.
+  </section>
+  <section>
+    <span class="code-text">scroll-behavior: smooth</span> helps with compatibility problems.<br> 
+    Now, polyfill comes in.
+  </section>
+  <section>
+    <a 
+    target="_blank" 
+    href="https://github.com/iamdustan/smoothscroll">smoothscroll</a>
+  </section>
+  <section>
+    The library implements <span class="code-text">window.scroll</span>, <span class="code-text">window.scrollTo</span>, 
+    <span class="code-text">window.scrollBy</span>, <span class="code-text">Element.prototype.scroll</span>, 
+    <span class="code-text">Element.prototype.scrollTo</span>, <span class="code-text">Element.prototype.scrollBy</span>, 
+    <span class="code-text">Element.prototype.scrollIntoView</span> polyfills, with smooth scrolling effects.
+  </section>
+  <section>
+    To understand the codes, being basic again.
+  </section>
+  <section>
+    <img data-src="./assets/ecma-logo.jpg">
+    <div data-markdown>
+      As we known, browser vendors build their javascript engine according to _ECMAScript Starandard_.
+    </div>
+  </section>
+  <section data-markdown>
+    For example, `ECMA‐262` introduces `ES6 arrow function` and browser vendors implement it and then, 
+    you can execute this syntax natively in browser.
+  </section>
+  <section>
+    Now, a very basic but tricky question is: <br>
+    <span class="code-text">window.scroll, Element.scrollIntoView</span> or those methods mentioned above, 
+    are they a part of <span class="code-text">ECMAScript Starandard</span> ?
+  </section>
+  <section>
+    The answer is
+  </section>
+  <section>
+    Absolutely, no.
+  </section>
+</section>
