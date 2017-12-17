@@ -29,6 +29,7 @@
     <img data-src="./assets/ecma-logo.jpg">
     <div data-markdown>
       As we known, browser vendors build their javascript engine according to _ECMAScript Starandard_.
+      (Although varying degrees of conformance to the standard)
     </div>
   </section>
   <section data-markdown>
@@ -45,5 +46,63 @@
   </section>
   <section>
     Absolutely, no.
+  </section>
+  <section data-markdown>
+    > The [W3C DOM](https://www.w3.org/DOM/) and [WHATWG DOM](https://dom.spec.whatwg.org/) standards are 
+    implemented in most modern browsers.
+  </section>
+  <section data-markdown>
+    We interact with `DOM` everyday, now we make it clearer.
+  </section>
+  <section data-markdown>
+    Key concepts to understand `DOM`.
+  </section>
+  <section data-markdown>
+    > The `Document Object Model` is a **platform- and language-neutral interface** that 
+    will allow programs and scripts to dynamically access and update the content, structure 
+    and style of documents.
+  </section>
+  <section data-markdown>
+    > The `Document Object Model (DOM)` is a programming interface for `HTML` and `XML` 
+    documents. **It represents the page so that programs can change the document 
+    structure, style, and content.** The DOM represents the document as **nodes and 
+    objects**. That way, programming languages can connect to the page.
+  </section>
+  <section data-markdown>
+    > The Document Object Model (DOM) **connects** web pages to scripts or programming languages.
+    The DOM model represents a document with a logical tree.
+  </section>
+  <section data-markdown>
+    > Each branch of the tree ends in a **node**, and each node **contains objects** ... Nodes can have **event handlers attached** to them. Once an event is 
+    triggered, the event handlers get executed.
+  </section>
+  <section data-markdown>
+    > The `DOM` is an **object-oriented representation** of the web page, which can be modified with a scripting language such as JavaScript.
+  </section>
+  <section data-markdown>
+    Javascript and DOM
+    > but it(javascript) uses the DOM to access the document and its elements. The DOM is 
+    not a programming language, but without it, the JavaScript language **wouldn't 
+    have any model or notion** of web pages, HTML documents, XML documents, and their 
+    component parts (e.g. elements).
+  </section>
+  <section data-markdown>
+    > The `DOM` was designed to be **independent** of any particular programming 
+    language, making the structural representation of the document 
+    available from a single, **consistent API**.
+
+    ``` python
+    # Python DOM example
+    import xml.dom.minidom as m
+    doc = m.parse("C:\\Projects\\Py\\chap1.xml");
+    doc.nodeName # DOM property of document object;
+    p_list = doc.getElementsByTagName("para");
+    ```
+  </section>
+  <section data-markdown>
+    References: <br>
+    [[1]](https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model/Introduction) Introduction to the DOM <br/>
+    [[2]](https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model) Document Object Model (DOM) <br/>
+    [[3]](https://www.w3.org/DOM/#what) Document Object Model (DOM) W3C    
   </section>
 </section>
