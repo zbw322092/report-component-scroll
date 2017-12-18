@@ -99,10 +99,88 @@
     p_list = doc.getElementsByTagName("para");
     ```
   </section>
+  <section>
+    HTML and DOM <br>
+    <img data-src="./assets/img-html.png"> <br>
+    Do the HTML codes we daily written is DOM?
+  </section>
+  <section>
+    No
+  </section>
+  <section>
+    So what about the html codes show within "view sources" page? Are they DOM? <br>
+    <img data-src="./assets/img-view-source.png"> <br>
+  </section>
+  <section>
+    No neither.
+  </section>
+  <section data-markdown>
+    The HTML code need to be **parsed** (most of time by browsers) to become DOM.
+  </section>
+  <section>
+    So, the structure shown in browser DEV Tools is DOM.
+  </section>
   <section data-markdown>
     References: <br>
     [[1]](https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model/Introduction) Introduction to the DOM <br/>
     [[2]](https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model) Document Object Model (DOM) <br/>
-    [[3]](https://www.w3.org/DOM/#what) Document Object Model (DOM) W3C    
+    [[3]](https://www.w3.org/DOM/#what) Document Object Model (DOM) W3C
+    [[4]](https://css-tricks.com/dom/) What is the DOM? CSS tricks
+  </section>
+  <section>
+    Let's talk about a little bit details about DOM.
+  </section>
+  <section data-markdown>
+    First, a basic question. What is the difference between `Window` and `window`, 
+    `Document` and `document`.
+  </section>
+  <section data-markdown>
+    Short answer is, `Window` is the interface, `window` is the "instance".
+  </section>
+  <section>
+    Secondly, the inheritance of DOM.
+  </section>
+  <section>
+    <img data-src="./assets/img-HTMLInputElement.jpg"> <br>
+    <span data-markdown>
+      As we can see, `input` is an instance of `HTMLInputElement`, it has `require` and 
+      `addEventListener` Properties.
+    </span>
+  </section>
+  <section>
+    <img data-src="./assets/img-HTMLParagraphElement.jpg"> <br>
+    <span data-markdown>
+      `p` is an instance of `HTMLParagraphElement`, it has `addEventListener` property, 
+      with ``require` property `undefined`.
+    </span>
+  </section>
+  <section>
+    It is because DOM works like object-oriented object, with inheritance feature.
+  </section>
+  <section>
+    <img data-src="./assets/img-inheritance-HTMLParagraphElement.jpg"> <br>
+    <img data-src="./assets/img-inheritance-HTMLInputElement.jpg"> <br>
+  </section>
+  <section data-markdown>
+    Both `HTMLParagraphElement` and `HTMLInputElement` inherit from properties from 
+    `EventTarget` interface which implements `addEventListener` method. It's why both 
+    these two interfaces have `addEventListener` method. Yet, `HTMLInputElement` not 
+    only inherit properties from `EventTarget`, itself implements `require` property 
+    according to DOM standard.
+  </section>
+  <section data-markdown>
+    <textarea data-template>
+        It's why we can write HTML code like this:
+        ```
+        <input type="number" require="true" />
+        ```
+        and `require` property is not working on `p` element
+        ```
+        <p require="true">something here</p>
+        ```
+    </textarea>
+  </section>
+  <section>
+    DOM basic stop here. Code now.
   </section>
 </section>
