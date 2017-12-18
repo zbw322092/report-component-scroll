@@ -1,0 +1,78 @@
+<section id="page">
+  <section data-markdown>
+    <textarea data-template>
+      Core Method: <br/>
+      `smoothScroll()`
+    </textarea>
+  </section>
+  <section data-markdown>
+    <textarea data-template>
+      Method: `now()` 
+      ``` javascript
+      var now = w.performance && w.performance.now
+        ? w.performance.now.bind(w.performance)
+        : Date.now;
+      ```
+    </textarea>
+  </section>
+  <section data-markdown>
+    <textarea data-template>
+      > The `performance.now()` method returns a `DOMHighResTimeStamp`, measured 
+      in milliseconds, accurate to **five thousandths of a millisecond (5 microseconds)**.
+    </textarea>
+  </section>
+  <section data-markdown>
+    <textarea data-template>
+      In simple terms, `performance.now()` is **relative to page load** (`performance.timing.navigationStart`), <br/><br/>
+      `Date.now()` is **relative to the Unix epoch** (1970-01-01T00:00:00Z)
+    </textarea>
+  </section>
+  <section data-markdown>
+    <textarea data-template>
+      Usage case:
+      - benchmarking
+      - game or animation runloop code
+      - calculating framerate with precision
+      - cueing actions or audio to occur at specific points in an animation or other time-based sequence
+    </textarea>
+  </section>
+  <section data-markdown>
+    <textarea data-template>
+      References: <br>
+      [[1]](https://developer.mozilla.org/en-US/docs/Web/API/Performance/now) performance.now() <br/>
+      [[2]](https://stackoverflow.com/a/30795586/6498272) performance.now() vs Date.now() <br/>
+      [[3]](https://developers.google.com/web/updates/2012/08/When-milliseconds-are-not-enough-performance-now?hl=en) When milliseconds are not enough: performance.now <br/>
+      [[4]](https://www.html5rocks.com/en/tutorials/webperformance/usertiming/) User Timing API        
+    </textarea>
+  </section>
+  <section data-markdown>
+    <textarea data-template>
+      `Window.scrollX` vs `Window.pageXOffset` <br/>
+      `Window.scrollY` vs `Window.pageYOffset`<br/><br/>
+      
+      `Window.pageXOffset` is the an alias for `window.scrollX`, with better cross-browser compatibility.
+    </textarea>
+  </section>
+  <section data-markdown>
+    Method: `step()`
+  </section>
+  <section>
+    <span data-markdown>`ease()` with min 0, max 1.</span>
+    <img data-src="./assets/img-easing-function.jpg">
+  </section>
+  <section data-markdown>
+    `ease` function customizes the scroll process. Yes, it's the CUSTOMIZATION you want!! 
+  </section>
+  <section data-markdown>
+    <textarea data-template>
+      `window.requestAnimationFrame()`
+      > The `window.requestAnimationFrame()` method tells the browser that you wish to 
+      perform an animation and requests that the browser call a specified function to 
+      update an animation **before the next repaint**.
+    </textarea>
+  </section>
+  <section>
+    To understand `window.requestAnimationFrame()` better, let's talk some knowledge 
+    about webpage render.
+  </section>
+</section>
