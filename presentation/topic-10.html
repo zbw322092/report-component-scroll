@@ -1,0 +1,54 @@
+<section id="page">
+  <section data-markdown>
+    # Webpage Rendering
+  </section>
+  <section>
+    The first key point need to be clarify is the webpage rendering process.
+  </section>
+  <section>
+    We write HTML, CSS and Javascript code, browser processes them, and then, 
+    image shown. <br>
+    what happened underneath?
+  </section>
+  <section>
+    <img data-src="https://developers.google.com/web/fundamentals/performance/rendering/images/intro/frame-full.jpg">
+  </section>
+  <section data-markdown>
+    Process 1: JavaScript
+    > Typically JavaScript is used to handle work that will result 
+    in visual changes, whether it’s jQuery’s animate function, sorting a data set, 
+    or adding DOM elements to the page. It doesn’t have to be JavaScript that 
+    triggers a visual change, though: CSS Animations, Transitions, and the Web 
+    Animations API are also commonly used.    
+  </section>
+  <section data-markdown>
+    Process 2: Style calculations
+    > This is the process of figuring out which CSS rules apply to which elements 
+    based on matching selectors.
+  </section>
+  <section data-markdown>
+    Process 3: Layout
+    > Once the browser knows which rules apply to an element it can begin to 
+    calculate how much **space it takes up** and **where** it is on screen. The web’s layout 
+    model means that one element can **affect others**.
+  </section>
+  <section data-markdown>
+    Process 4: Paint
+    > Painting is the process of **filling in pixels**. It involves drawing out text, 
+    colors, images, borders, and shadows, essentially every visual part of the 
+    elements. The drawing is typically done onto **multiple surfaces**, often called 
+    **layers**.
+  </section>
+  <section data-markdown>
+    Process 5: Compositing
+    > Since the parts of the page were drawn into potentially multiple layers 
+    they need to be drawn to the screen in the correct order so that the page 
+    renders correctly.
+  </section>
+  <section>
+    <textarea data-template>
+      References: <br>
+      [[1]](https://developers.google.com/web/fundamentals/performance/rendering/) Rendering Performance <br/>
+    </textarea>
+  </section>
+</section>
