@@ -1,0 +1,18 @@
+.element {
+  width: 200px;
+  height: 200px;
+  background: #e4e4e4;
+  transition: width 300ms, height 300ms;
+}
+
+.expended {
+  width: 400px;
+  height: 400px;
+  transition: width 300ms, height 300ms;
+}
+
+#btn {
+  position: absolute;
+  right: 20px;
+  top: 500px;
+}

@@ -1,0 +1,115 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <div class="app">
+    <div class="content">
+      <div class="container">
+        <img class="element collapsed" src="https://support.squarespace.com/hc/en-us/article_attachments/210462168/special-page-banner.jpg">
+      </div>
+      <div class="container">
+        <img class="element collapsed" src="https://support.squarespace.com/hc/en-us/article_attachments/210462168/special-page-banner.jpg">
+      </div>
+      <div class="container">
+        <img class="element collapsed" src="https://support.squarespace.com/hc/en-us/article_attachments/210462168/special-page-banner.jpg">
+      </div>
+      <div class="container">
+        <img class="element collapsed" src="https://support.squarespace.com/hc/en-us/article_attachments/210462168/special-page-banner.jpg">
+      </div>
+    </div>
+  </div>
+
+  <script>
+
+    var elem = document.querySelectorAll('.element');
+
+    for (i = 0; i < elem.length; i++) {
+
+      elem[i].addEventListener('click', function () {
+
+        if (this.classList.contains('collapsed')) {
+
+          var that = this;
+
+          that.classList.add('expanding');
+          that.classList.remove('collapsed');
+          that.classList.add('expanded');
+          var collapsed = that.getBoundingClientRect();
+          that.classList.remove('expanded');
+          that.classList.add('collapsed');
+          var expanded = that.getBoundingClientRect();
+          that.classList.add('transition');
+
+          var invertedTop = collapsed.top - expanded.top;
+          var invertedLeft = collapsed.left - expanded.left;
+          var invertedWidth = collapsed.width / expanded.width;
+          var invertedHeight = collapsed.height / expanded.height;
+
+          that.style.transformOrigin = 'top left';
+
+          that.style.transform = 'translateX(' + invertedLeft + 'px) translateY(' + invertedTop + 'px) translateZ(0) scaleX(' + invertedWidth + ') scaleY(' + invertedHeight + ')';
+
+          that.addEventListener('transitionend', function handler(event) {
+            that.style.transform = '';
+            that.style.transformOrigin = '';
+            that.classList.remove('transition');
+            that.classList.remove('expanding');
+            that.classList.remove('collapsed');
+            that.classList.add('expanded');
+            that.removeEventListener('transitionend', handler);
+          });
+
+        } else if (this.classList.contains('expanded') && !this.classList.contains('collapsing')) {
+
+          var that = this;
+
+          requestAnimationFrame(function () {
+
+            that.classList.add('collapsing');
+            that.classList.remove('expanded');
+            that.classList.add('collapsed');
+            var collapsed = that.getBoundingClientRect();
+            that.classList.remove('collapsed');
+            that.classList.add('expanded');
+            var expanded = that.getBoundingClientRect();
+            that.classList.add('transition');
+
+            var invertedTop = collapsed.top - expanded.top;
+            var invertedLeft = collapsed.left - expanded.left;
+            var invertedWidth = collapsed.width / expanded.width;
+            var invertedHeight = collapsed.height / expanded.height;
+
+            that.style.transformOrigin = 'top left';
+            that.style.transform = 'translate(' + invertedLeft + 'px, ' + invertedTop + 'px) scale(' + invertedWidth + ', ' + invertedHeight + ')';
+
+            that.addEventListener('transitionend', function handler(event) {
+              that.style.transform = '';
+              that.style.transformOrigin = '';
+              that.style.webkitTransform = '';
+              that.style.webkitTransformationOrigin = '';
+              that.classList.remove('transition');
+              that.classList.remove('collapsing');
+              that.classList.remove('expanded');
+              that.classList.add('collapsed');
+              that.removeEventListener('transitionend', handler);
+            });
+
+          });
+
+        }
+
+      });
+
+    };
+
+  </script>
+</body>
+
+</html>

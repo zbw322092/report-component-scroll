@@ -1,0 +1,30 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <div class="element"></div>
+
+  <button id="btn">Click to Animate</button>
+
+  <script>
+    var element = document.querySelector(".element");
+    var btn = document.querySelector("#btn");
+
+    btn.addEventListener('click', () => {
+      if (element.classList.contains('expended')) {
+        element.classList.remove('expended');
+      } else {
+        element.classList.add('expended');
+      }
+    });
+  </script>
+</body>
+
+</html>
