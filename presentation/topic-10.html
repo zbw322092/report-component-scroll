@@ -11,43 +11,97 @@
     what happened underneath?
   </section>
   <section>
-    <img data-src="https://developers.google.com/web/fundamentals/performance/rendering/images/intro/frame-full.jpg">
+    <img data-src="https://cdn-images-1.medium.com/max/800/0*gMqY9IVJXuBbE8DF.">
   </section>
-  <section data-markdown>
-    Process 1: JavaScript
+  <!-- <section data-markdown>
+    Process 1: JavaScript/CSS
     > Typically JavaScript is used to handle work that will result 
     in visual changes, whether it’s jQuery’s animate function, sorting a data set, 
     or adding DOM elements to the page. It doesn’t have to be JavaScript that 
     triggers a visual change, though: CSS Animations, Transitions, and the Web 
-    Animations API are also commonly used.    
+    Animations API are also commonly used.
+  </section> -->
+  <section data-markdown>
+    <textarea data-template>
+      Process 1: Style calculations
+      > This is the process of figuring out which CSS rules apply to which elements 
+      based on matching selectors. <br><br>
+      > The DOM (Document Object Model) is formed from the HTML and Styles are loaded and parsed, forming the CSSOM (CSS Object Model).
+    </textarea>
+  </section>
+  <section>
+    <img data-src="https://aerotwist.com//static/blog/pixels-are-expensive/recalc-style.jpg" />
+    <div>
+      Selector matching and figuring out which styles apply to which parts of the DOM.(this is super 
+      fast unless you have a DOM tree with thousands upon thousands of elements and you 
+      change a large part of said tree, either directly or through cascade)
+    </div>
   </section>
   <section data-markdown>
-    Process 2: Style calculations
-    > This is the process of figuring out which CSS rules apply to which elements 
-    based on matching selectors.
-  </section>
-  <section data-markdown>
-    Process 3: Layout
+    Process 2: Layout
     > Once the browser knows which rules apply to an element it can begin to 
     calculate how much **space it takes up** and **where** it is on screen. The web’s layout 
     model means that one element can **affect others**.
   </section>
   <section data-markdown>
-    Process 4: Paint
+    Process 3: Paint
     > Painting is the process of **filling in pixels**. It involves drawing out text, 
     colors, images, borders, and shadows, essentially every visual part of the 
     elements. The drawing is typically done onto **multiple surfaces**, often called 
     **layers**.
   </section>
   <section data-markdown>
+    <textarea>
+      Paint is where you’re going to spend the vast majority of your time. <br>
+      If you change a layout property you are almost certainly going to trigger paint.
+    </textarea>
+  </section>
+  <section data-markdown>
     <textarea data-template>
-      Process 5: Compositing
+      Process 4: Compositing
       > Since the parts of the page were drawn into potentially multiple layers 
       they need to be drawn to the screen in the correct order so that the page 
       renders correctly. <br>
       > Compositing is where the painted parts of the page are put together for 
       displaying on screen.
     </textarea>
+  </section>
+  <section>Page rendered, now, you may modify, manipulate, navigate, scroll or do 
+    something else within it, page will get changed.</section>
+  <section>
+    You may make page changes in these following ways.
+  </section>
+  <section>
+    JS / CSS > Style > Layout > Paint > Composite
+
+    <img data-src="https://developers.google.com/web/fundamentals/performance/rendering/images/intro/frame-full.jpg" />
+    <div>
+      If you change a “layout” property, so that’s one that changes an element’s 
+      geometry(eg. width, top), the browser will have to check all the other elements and “reflow” the page. 
+      Any affected areas will need to be repainted, and the final painted elements will need to be 
+      composited back together.
+    </div>
+  </section>
+  <section>
+    JS / CSS > Style > Paint > Composite
+
+    <img data-src="https://developers.google.com/web/fundamentals/performance/rendering/images/intro/frame-no-layout.jpg" />
+    <div>
+      If you changed a “paint only” property (eg. backgdound-image, color), in other words one that does not 
+      affect the layout of the page, then the browser skips layout, but it will still do paint.
+    </div>
+  </section>
+  <section>
+    JS / CSS > Style > Composite
+  
+    <img data-src="https://developers.google.com/web/fundamentals/performance/rendering/images/intro/frame-no-layout-paint.jpg" />
+    <div>
+      If you change a property that requires neither layout nor paint, and the browser jumps to just do compositing.
+    </div>
+  </section>
+
+  <section>
+    Obviously, we would like to trigger less browser works to achieve better performace.
   </section>
   <section data-markdown>
     <textarea data-template>
@@ -56,12 +110,18 @@
       In many cases it's about working with the browser, **not against it**.
     </textarea>
   </section>
+  <section>
+    <img data-src="https://www.html5rocks.com/en/tutorials/speed/high-performance-animations/cheap-operations.jpg" />
+  </section>
   <section data-markdown>
     <textarea data-template>
-      - Stick to transform and opacity changes for your animations.
-      - Promote moving elements with will-change or translateZ.
-      - Avoid overusing promotion rules; layers require memory and management.      
+      - Stick to `transform` and `opacity` changes for your animations.
+      - Promote moving elements with `will-change` or `translateZ`.
+      - Avoid overusing promotion rules; layers require memory and management.
     </textarea>
+  </section>
+  <section>
+    Some examples here.
   </section>
   <section data-markdown>
     <textarea data-template>
@@ -71,6 +131,15 @@
       [[3]](https://medium.com/outsystems-experts/how-to-achieve-60-fps-animations-with-css3-db7b98610108) Smooth as Butter: Achieving 60 FPS Animations with CSS3 <br/>
       [[4]](https://csstriggers.com/) css triggers <br/>
       [[5]](https://medium.com/outsystems-experts/flip-your-60-fps-animations-flip-em-good-372281598865) FLIP Your 60 FPS Animations, FLIP ’Em Good <br/>
+      [[6]](https://aerotwist.com/blog/flip-your-animations/) FLIP Your Animations <br>
+      [[7]](https://aerotwist.com/blog/pixels-are-expensive/) Pixels are expensive <br>
+      [[8]](http://frontendbabel.info/articles/webpage-rendering-101/) What Every Frontend Developer Should Know About Webpage Rendering <br>
+    </textarea>
+  </section>
+  <section data-markdown>
+    <textarea data-template>
+      References: <br>
+      [[9]](https://www.html5rocks.com/en/tutorials/speed/high-performance-animations/) High Performance Animations <br/>
     </textarea>
   </section>
   <section data-markdown>
@@ -81,8 +150,9 @@
       [[3]](https://cn.udacity.com/course/browser-rendering-optimization--ud860) Udacity browser performace course <br/>
       [[4]](https://developers.google.com/web/fundamentals/performance/rail) Measure Performance with the RAIL Model <br>
       [[5]](http://kristerkari.github.io/adventures-in-webkit-land/blog/2013/08/30/fixing-a-parallax-scrolling-website-to-run-in-60-fps/) Fixing a parallax scrolling website to run in 60 FPS <br>
-      [[6]](https://aerotwist.com/blog/flip-your-animations/) FLIP Your Animations <br>
-      [[7]](http://taligarsiel.com/Projects/howbrowserswork1.htm) How browsers work <br>
+      [[6]](http://taligarsiel.com/Projects/howbrowserswork1.htm) How browsers work <br>
+      [[7]](https://dev.opera.com/articles/css-will-change-property/) Everything You Need to Know About the CSS will-change Property<br>
+      [[8]](https://aerotwist.com/blog/on-translate3d-and-layer-creation-hacks/) On translate3d and layer creation hacks<br>
     </textarea>
   </section>
 </section>

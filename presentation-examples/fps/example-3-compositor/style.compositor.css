@@ -2,12 +2,19 @@
   width: 200px;
   height: 200px;
   background: #e4e4e4;
-  transform: scale(1,1);
+  /* will-change: transform; */
+  transform: translateY(0px);
   transition: transform .3s ease-in;
+}
+.element-1 {
+  width: 200px;
+  height: 200px;
+  background: #999999;
 }
 
 .expended {
-  transform: scale(2,2);
+  /* will-change: transform; */
+  transform: translateY(200px);
   transition: transform .3s ease-in;
 }
 

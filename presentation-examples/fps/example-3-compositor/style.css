@@ -1,14 +1,25 @@
 .element {
+  position: relative;
+  top: 0;
+  /* margin-top: 0; */
   width: 200px;
   height: 200px;
   background: #e4e4e4;
-  transition: width 300ms, height 300ms;
+  transition: top 300ms;
+  /* transition: margin-top 300ms; */
+}
+
+.element-1 {
+  width: 200px;
+  height: 200px;
+  background: #999999;
 }
 
 .expended {
-  width: 400px;
-  height: 400px;
-  transition: width 300ms, height 300ms;
+  top: 200px;
+  /* margin-top: 200px; */
+  transition: top 300ms;
+  /* transition: margin-top 300ms; */
 }
 
 #btn {
