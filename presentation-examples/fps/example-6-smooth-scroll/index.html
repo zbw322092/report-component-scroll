@@ -1,0 +1,78 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <button id="btn">Click to Scroll</button>
+
+  <div class="element"></div>
+  <div class="element"></div>
+  <div class="element"></div>
+  <div class="element"></div>
+  <div class="element"></div>
+  <div class="element"></div>
+  <div class="element"></div>
+  <div class="element"></div>
+  <div class="element"></div>
+  <div class="element"></div>
+
+  <script>
+
+    function now() {
+      return performance.now() || new Date.getTime();
+    }
+
+    function easing (k) {
+      return 0.5 * (1 - Math.cos(Math.PI * k));
+    }
+
+    var startTime;
+
+    function smoothScroll (elem, distX, distY, duration) {
+      var startX;
+      var startY;
+      var deltaX;
+      var deltaY;
+
+      if (elem === document.scrollingElement || elem === document.body) {
+        startX = window.scrollX;
+        startY = window.scrollY;
+        deltaX = distX - startX;
+        deltaY = distY - startY;
+      } else {
+
+      }
+
+      window.requestAnimationFrame(function(timestamp) {
+        var timeElapse = timestamp - startTime;
+        console.log(timeElapse);
+        if (timeElapse < duration) {
+          var timePercentage = Math.min(timeElapse / duration, 1);
+          var progress = easing(timePercentage);
+          var yMove = deltaY * progress;
+          // elem.style.transform = 'translateY(-' + yMove + 'px)';
+          elem.scrollTop = yMove;
+          smoothScroll (elem, distX, distY, duration);
+        }
+      });
+
+    }
+
+    var btn = document.querySelector('#btn');
+
+    btn.addEventListener('click', function() {
+      startTime = now();
+      smoothScroll(document.scrollingElement, 0, 1000, 2000);
+    });
+
+
+  </script>
+</body>
+
+</html>
