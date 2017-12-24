@@ -1,0 +1,30 @@
+#myDiv {
+  position: relative;
+  width: 60%;
+  height: 100px;
+  background: #999999;
+}
+
+#moveMe {
+  position: relative;
+  width: 15px;
+  height: 15px;
+  background: #666666;
+  margin-top: 20px;
+}
+
+#transformMe {
+  position: relative;
+  width: 15px;
+  height: 15px;
+  background: #ff5346;
+  margin-top: 20px;
+}
+
+#useInterval {
+  position: relative;
+  width: 15px;
+  height: 15px;
+  background: #ff5346;
+  margin-top: 20px;
+}

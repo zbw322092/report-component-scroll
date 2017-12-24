@@ -1,0 +1,80 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <div id="myDiv"></div>
+  <button id="cancelMe">Cancel Me</button>
+
+  <div id="moveMe"></div>
+
+  <div id="transformMe"></div>
+
+  <script>
+    // var requestAnimationFrameId;
+    // var adiv = document.getElementById('myDiv');
+    // var leftpos = 0
+
+    // function movediv(timestamp) {
+    //   leftpos += 5;
+    //   adiv.style.left = leftpos + 'px';
+
+    //   requestAnimationFrameId = requestAnimationFrame(movediv);
+    // }
+
+    // requestAnimationFrame(movediv);
+
+    // document.querySelector('#cancelMe').addEventListener('click', function() {
+    //   cancelAnimationFrame(requestAnimationFrameId);
+    // });
+
+
+
+    var starttime;
+    var moveMeDiv = document.getElementById('moveMe');
+    var i = 0;
+    function moveIt(timestamp, el, dist, duration) {
+      var runtime = timestamp - starttime;
+      var progress = runtime / duration;
+      progress = Math.min(progress, 1);
+      el.style.left = (dist * progress).toFixed(2) + 'px';
+      if (runtime < duration) {
+        requestAnimationFrame(function(time) {
+          moveIt(time, el, dist, duration);
+        });
+      }
+    }
+
+    requestAnimationFrame(function(timestamp) {
+      starttime = timestamp || new Date().getTime();
+      moveIt(timestamp, moveMeDiv, 400, 2000) // 400px over 1 second
+    });
+
+
+    var transformMeDiv = document.querySelector('#transformMe');
+    function transformIt(timestamp, el, dist, duration) {
+      var runtime = timestamp - starttime;
+      var progress = Math.min(runtime / duration, 1);
+      var distance = progress * dist;
+      el.style.transform = 'translateX(' + distance + 'px)';
+
+      if (runtime < duration) {
+        requestAnimationFrame(function(timestamp) {
+          transformIt(timestamp, el, dist, duration);
+        });
+      }
+    }
+    requestAnimationFrame(function(timestamp) {
+      starttime = timestamp || new Date.getTime();
+      transformIt(timestamp, transformMeDiv, 400, 2000);
+    });
+  </script>
+</body>
+
+</html>

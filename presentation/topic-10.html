@@ -51,7 +51,20 @@
     **layers**.
   </section>
   <section data-markdown>
-    <textarea>
+    <textarea data-template>
+      In Chrome that combined tree of DOM and CSS is **rasterized** by some software 
+      called `Skia`. <br><br>
+      Essentially all the elements that need to be painted are distilled to a collection 
+      of Skia calls that can be executed, and the output of is **a bunch of bitmaps**. 
+      These bitmaps are uploaded to the GPU, and the GPU helps out by compositing them 
+      together to give us the final picture on screen.<br>
+    </textarea>
+  </section>
+  <section>
+    <img src="https://www.html5rocks.com/static/demos/unnecessary-paints/images/domtopixels.jpg" />
+  </section>
+  <section data-markdown>
+    <textarea data-template>
       Paint is where you’re going to spend the vast majority of your time. <br>
       If you change a layout property you are almost certainly going to trigger paint.
     </textarea>
@@ -140,6 +153,10 @@
     <textarea data-template>
       References: <br>
       [[9]](https://www.html5rocks.com/en/tutorials/speed/high-performance-animations/) High Performance Animations <br/>
+      [[10]](https://www.html5rocks.com/en/tutorials/speed/unnecessary-paints/) Avoiding Unnecessary Paints <br/>
+      [[11]](https://www.html5rocks.com/en/tutorials/speed/scrolling/) Scrolling Performance <br/>
+      [[12]](https://developers.google.com/web/fundamentals/performance/rendering/simplify-paint-complexity-and-reduce-paint-areas) Simplify Paint Complexity and Reduce Paint Areas <br/>
+      [[13]](https://www.html5rocks.com/en/tutorials/speed/animations/) Leaner, Meaner, Faster Animations with requestAnimationFrame <br/>
     </textarea>
   </section>
   <section data-markdown>
@@ -154,5 +171,111 @@
       [[7]](https://dev.opera.com/articles/css-will-change-property/) Everything You Need to Know About the CSS will-change Property<br>
       [[8]](https://aerotwist.com/blog/on-translate3d-and-layer-creation-hacks/) On translate3d and layer creation hacks<br>
     </textarea>
+  </section>
+  <section data-markdown>
+    <textarea data-template>
+      Further: <br/>
+      [[9]](http://wilsonpage.co.uk/preventing-layout-thrashing/) Preventing 'layout thrashing' <br/>
+      [[10]](http://www.stubbornella.org/content/2009/03/27/reflows-repaints-css-performance-making-your-javascript-slow/) REFLOWS & REPAINTS: CSS PERFORMANCE MAKING YOUR JAVASCRIPT SLOW? <br/>
+      [[11]](https://www.html5rocks.com/en/tutorials/speed/css-paint-times/) CSS Paint Times and Page Render Weight <br/>
+      [[12]](http://jankfree.org/) jankfree.org <br/>
+      [[13]](http://designingforperformance.com/basics-of-page-speed/) The Basics of Page Speed <br/>
+    </textarea>
+  </section>
+  <section data-markdown>
+    Back to `window.requestAnimationFrame`.
+  </section>
+  <section data-markdown>
+    <textarea data-template>
+      Have a look of defination again: <br> 
+      The `window.requestAnimationFrame()` method tells 
+      the browser that you wish to perform an animation and requests that the browser 
+      call a specified function to update an animation before the **next repaint**. 
+      The method takes a callback as an argument to be invoked before the repaint.
+    </textarea>
+  </section>
+  <section data-markdown>
+    <textarea data-templae>
+      A basic question:<br> 
+      Does `window.requestAnimationFrame` always execute passed in function 
+      roughly every 16ms?
+    </textarea>
+  </section>
+  <section>
+    Actually, no.
+  </section>
+  <section data-markdown>
+    Frames are only drawn when the browser is ready to paint. If browser spends a relative 
+    long period time on passed in function, paint will execute utill this function finish.
+  </section>
+  <section>
+    See the example-5-requestAnimationFrame/index-setInterval.html
+  </section>
+  <section data-markdown>
+    Another question about `window.requestAnimationFrame` is that, why we use it to handle 
+    animation changes over more simple and compatible `setInterval` method.
+  </section>
+  <section data-markdown>
+    <textarea data-template>
+      - Less CPU, GPU and memory usage <br>
+
+      JavaScript timers continue to work even in background tabs, and even when the 
+      corresponding browser window is minimized. Yet, `requestAnimationFrame` only draws 
+      the animations that will be visible to the user. (no CPU power or battery life 
+      is wasted drawing animations that are running in background tabs, minimized 
+      windows, or otherwise hidden parts of a page.)
+    </textarea>
+  </section>
+  <section data-markdown>
+    <textarea data-template>
+      - Browser Optimizations <br>
+
+      Using `requestAnimationFrame` gives the browser the ability to optimize your 
+      animations to make them smoother and more resource efficient. It eliminates 
+      the possibility of unnecessary draws and can bunch together multiple 
+      animations into a single reflow and repaint cycle.
+    </textarea>
+  </section>
+  <section data-markdown>
+    <textarea data-template>
+      - timer may queue <br>
+
+      Saying for some reason the callback function takes more time to finish than 
+      you have set up your timers for. Once the timers are up they will enqueue yet 
+      another callback function, even though the previous one hasn’t finished running. 
+      As this process repeats itself over time, you can quickly enqueue a virtually 
+      infinite amount of timer code, causing the browser to stall.
+    </textarea>
+  </section>
+  <section>
+    <img data-src="https://dev.opera.com/articles/better-performance-with-requestanimationframe/figure1.png" />
+  </section>
+  <section data-markdown>
+    <textarea data-template>
+      - timer may cause unnecessary paints <br/>
+
+      Timer can only redraw animations at a fixed rate, so to make sure the animation 
+      is smooth, we tend to err on the side of caution and choose a frequency slightly 
+      higher than the display refresh rate. This, however, causes unnecessary drawing, 
+      as some frames are drawn before the display refresh rate is ready to paint the 
+      animation outcome and are therefore just discarded.
+    </textarea>
+  </section>
+  <section>
+    <img data-src="https://dev.opera.com/articles/better-performance-with-requestanimationframe/figure2.png" />
+  </section>
+  <section data-markdown>
+    <textarea data-template>
+      References: <br>
+      [[1]](https://dev.opera.com/articles/better-performance-with-requestanimationframe/) Better Performance With requestAnimationFrame <br/>
+      [[2]](https://css-tricks.com/snippets/javascript/replacements-setinterval-using-requestanimationframe/) Replacements for setInterval Using requestAnimationFrame <br/>
+      [[3]](http://blog.teamtreehouse.com/efficient-animations-with-requestanimationframe) Efficient Animations with requestAnimationFrame <br/>
+      [[4]](http://www.javascriptkit.com/javatutors/requestanimationframe.shtml) Understanding JavaScript's requestAnimationFrame() method for smooth animations <br/>
+      [[5]](https://www.paulirish.com/2011/requestanimationframe-for-smart-animating/) requestAnimationFrame for Smart Animating <br/>
+      [[6]](https://www.nczonline.net/blog/2011/05/03/better-javascript-animations-with-requestanimationframe/) Better JavaScript animations with requestAnimationFrame <br/>
+    </textarea>
+  </section>
+  <section>
+    Enough webpage rendering explanation here, go back to code.
   </section>
 </section>

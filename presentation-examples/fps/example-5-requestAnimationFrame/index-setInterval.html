@@ -1,0 +1,71 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+  <div id="transformMe"></div>
+
+  <div id="useInterval"></div>
+  <script>
+
+
+    var starttime;
+    var transformMeDiv = document.querySelector('#transformMe');
+    var i = 0;
+    function transformIt(timestamp, el, dist, duration) {
+      // var x = 0;
+      // while (x < 1000) {
+      //   console.log('caculation');
+      //   ++x;
+      // }
+      // ++i;
+      // console.log(i);
+      var runtime = timestamp - starttime;
+      var progress = Math.min(runtime / duration, 1);
+      var distance = progress * dist;
+      el.style.transform = 'translateX(' + distance + 'px)';
+
+      if (runtime < duration) {
+        requestAnimationFrame(function(timestamp) {
+          transformIt(timestamp, el, dist, duration);
+        });
+      }
+    }
+    requestAnimationFrame(function(timestamp) {
+      starttime = timestamp || new Date.getTime();
+      transformIt(timestamp, transformMeDiv, 400, 2000);
+    });
+
+
+    
+    var useIntervalDiv = document.querySelector('#useInterval');
+    var t = 0;
+    var moveDistance = (400 / 2000) * 16;
+    var totalDistance = 0;
+    var intervalId = window.setInterval(function() {
+      // var x = 0;
+      // while (x < 500) {
+      //   console.log('caculation');
+      //   ++x;
+      // }
+      ++t;
+      console.log(t);
+
+      totalDistance += moveDistance;
+      useIntervalDiv.style.transform = 'translateX(' + totalDistance + 'px)';
+    },16);
+    
+    setTimeout(function() {
+      clearInterval(intervalId);
+    },2000);
+  </script>
+</body>
+
+</html>
