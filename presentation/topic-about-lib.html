@@ -1,0 +1,97 @@
+<section id="page">
+  <section data-markdown>
+    Experiences about choosing libraries.
+  </section>
+  <section data-markdown>
+    When you would like to use a library in your project to help get your job done, 
+    several points should be clear in your mind.
+  </section>
+  <section data-markdown>
+    <textarea data-template>
+      - ECMAScript runtime host environment and ECMAScript version. <br><br>
+      You may need compile / build tools to help you.
+    </textarea>
+  </section>
+  <section data-markdown>
+    <textarea data-template>
+      You need a library for server end (your node version?) OR <br>
+      You need a library running in browser (your compatibility requirement?). <br>
+    </textarea>
+  </section>
+  <section data-markdown>
+    <textarea data-template>
+      Libary write in ES6 or above?  Is Babel ready? <br>
+      Libary write in Typescript?  Are tscofig / Webpack ready? <br>
+      It's a base framework using in my project? Webpack DLL may necessary. <br>
+      You need wide browser support, except Babel, polyfill may include. <br>
+      You don't care about old browser, you love new syntaxs and methods, library written in
+      ES6 and above may your preference.
+    </textarea>
+  </section>
+
+  <section data-markdown>
+    <textarea data-template>
+      - Package management way.<br><br>
+      UMD, common.js, AMD, ES6 module, or just registering on `window` object?
+    </textarea>
+  </section>
+  <section data-markdown>
+    Example: reveal.js, zenscroll, using common.js lib in browser.
+  </section>
+
+  <section data-markdown>
+    <textarea data-template>
+      - Is there dependencies? <br><br>
+      vanilla javascript, jQuery as dependency, library for angular/react...
+    </textarea>
+  </section>
+  <section data-markdown>
+    <textarea data-template>
+      If dependencies exist, do them necessary? Eg. Is it deserve including jQuery if you just 
+      want a simple functionality. <br>
+      How can I integrate this lib/package into my existing framework (angular/react)?
+    </textarea>
+  </section>
+
+  <section data-markdown>
+    <textarea data-template>
+      - Small enough? <br><br>
+      Keep small as possible as you can. Less is more.
+    </textarea>
+  </section>
+  <section data-markdown>
+    <textarea data-template>
+      Do I need a comprehensive library which has a bunch of APIs and thousands loc? <br>
+      Are these provided APIs all necessary? You may just frequently use a small part 
+      of provided APIs, with the rests just used occasionally. <br>
+      Can this library be split into small chunks. If no offical subsets provided, can I 
+      do this myself?
+    </textarea>
+  </section>
+
+  <section data-markdown>
+    <textarea data-template>
+      - Browser compatibility.<br><br>
+      Does this library compatibility fits for my requirement?
+    </textarea>
+  </section>
+  <section data-markdown>
+    <textarea data-template>
+      Something you need wide browser compatibility which should working on IE8. <br>
+      But something you do not care about IEs, library codes which deal with IE compatibility 
+      because redundant and you may drop it.
+    </textarea>
+  </section>
+
+  <section data-markdown>
+    <textarea data-template>
+      - Comunity support and comprehensive doucument <br><br>
+      It's important for your problems solving.
+    </textarea>
+  </section>
+  <section data-markdown>
+    <textarea data-template>
+      Try to choose widely use, time tested or big company / organization maintained library.
+    </textarea>
+  </section>
+</section>
