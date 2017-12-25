@@ -11,4 +11,58 @@
 
     Actually these two points are the common pratise of lots of scrolling related libraries.
   </section>
+  <section data-markdown>
+    After we get core job done, one of the rest of the thing we need do is to figure out 
+    **"where should it scroll to"**
+  </section>
+  <section data-markdown>
+    <textarea data-template>
+      `window.scrollTo`, `window.scrollBy`, `Element.prototype.scroll`, `Element.prototype.scrollBy` are easy. <br>
+      Let's just have a look `Element.prototype.scrollIntoView` implementation.
+    </textarea>
+  </section>
+  <section data-markdown>
+    Thinking about that: Page and element with scrollable overflow can scroll up and down, but the absloute position of an 
+    element within scroll container(`window` or an overflowed element) is actually fixed.
+  </section>
+  <section>
+    So, our job is figuring out the target element absloute geometry positon.
+  </section>
+  <section>
+    Before doing absloute geometry positon caculation, we have to know how to get the parent scrollable container element.
+  </section>
+  <section data-markdown>
+    <textarea data-template>
+      Comparing `Element.clientHeight` with `Element.scrollHeight` to get know whether contents overflowed. <br>
+    </textarea>
+  </section>
+  <section>
+    <img data-src="https://mdn.mozillademos.org/files/346/Dimensions-client.png" />
+    <div data-markdown>
+      `clientHeight` can be calculated as CSS height + CSS padding - height of horizontal scrollbar (if present).
+    </div>
+  </section>
+  <section>
+    <img data-src="https://mdn.mozillademos.org/files/672/scrollHeight.png" />
+    <div data-markdown>
+      The `scrollHeight` value is equal to the minimum height the element would require in order to fit all the 
+      content in the viewport **without using a vertical scrollbar**.
+    </div>
+  </section>
+  <section data-markdown>
+    `findScrollableParent` method judge whether target element's `parentNode` scrollable 
+    to find out scrollable container.
+  </section>
+  <section>Now, back to position calculation</section>
+  <section data-markdown>
+    <textarea data-template>
+      For an element within `window`: <br>
+      `element.getBoundingClientRect().top` + `window.scrollY` <br><br>
+
+      For an element within a scrollable parent element.: <br>
+      `scrollableParent.scrollTop` + `clientRects.top` - `parentRects.top` <br><br>
+
+      The same caculation for x axis position. 
+    </textarea>
+  </section>
 </section>
