@@ -1,3 +1,136 @@
 <section id="page">
-
-</section>
+  <section data-markdown>
+    # `Iscroll`
+  </section>
+  <section data-markdown>
+    Before digging into `Iscroll`, some experience about reading library with lots loc.
+  </section>
+  <section data-markdown>
+    - Browsing and testing APIs provided by library to get a brief understand about it.
+  </section>
+  <section data-markdown>
+    - Thinking by yourself, what's the possible way the library take to finish these functionalities.
+  </section>
+  <section data-markdown>
+    - Looking into codes to examine your inferring.
+  </section>
+  <section data-markdown>
+    - Starting from core method, rathen than from file beginning. Core method will lead you.
+  </section>
+  <section data-markdown>
+    - If codes spread in many different files, find the core one.
+  </section>
+  <section data-markdown>
+    - If you facing a long file, try spiltting less important codes out, leaving important ones.
+  </section>
+  <section data-markdown>
+    - Reading with coding.
+  </section>
+  <section data-markdown>
+    - If you cannot not understand it anyway after trying lots of methods, giving up! Starting from 
+    easy ones, this one beyonds your ability right now.
+  </section>
+  <section>
+    Lastly
+  </section>
+  <section data-markdown>
+    - Saying meaningless, get your hands dirty, try yourself.
+  </section>
+  <section data-background-image="./assets/img-smile.jpg">
+  </section>
+  <section data-markdown>
+    `scrollTo()` method.
+  </section>
+  <section data-markdown>
+    `_translate` method
+  </section>
+  <section data-markdown>
+    > By default the engine uses the `transform` CSS property. Setting this to false scrolls like we were in 2007, ie: using the top/left (and thus the scroller needs to be absolutely positioned).
+    ... be warned: performance loss is huge.
+  </section>
+  <section data-markdown>
+    <textarea data-template>
+      > iScroll uses CSS `transition` to perform animations (momentum and bounce). By setting this to `false`, `requestAnimationFrame` is used instead. <br>
+      On modern browsers the difference is barely noticeable. On older devices transitions perform better.
+    </textarea>
+  </section>
+  <section>
+    You said everything I would like to say, what should I say.
+  </section>
+  <section>
+    Be happy
+  </section>
+  <section data-background-image="./assets/img-smile.jpg">
+  </section>
+  <section data-markdown>
+    `_animate` method
+  </section>
+  <section data-markdown>
+    <textarea data-template>
+      What you see in `_animate` method? <br/>
+      Yes, `step()` method, your acquaintance, it even not change name.
+    </textarea>
+  </section>
+  <section>
+    Exciting
+  </section>
+  <section data-markdown>
+    `scrollToElement()` method.
+  </section>
+  <section data-markdown>
+    `scrollToElement()` method based on `scrollTo()` method, the key of `scrollToElement()` is 
+    figuring out target element position relative to wrapper element.
+  </section>
+  <section data-markdown>
+    iScroll event handler: `handleEvent` property
+  </section>
+  <section data-markdown>
+    Events handler is an unique part comparing with most other scroll libraries, it is also 
+    why iScroll is a mobile first scroll library.
+  </section>
+  <section data-markdown>
+    Using `handleEvent` for legacy content compatibility.
+  </section>
+  <section data-markdown>
+    <textarea data-template>
+      Five kinds of events are listened and handled: <br>
+      `touch` <br>
+      `point` <br>
+      `mouse` <br>
+      `resize / orientationchange` <br>
+      `transition`
+    </textarea>
+  </section>
+  <section data-markdown>
+    `_start` method
+  </section>
+  <section data-markdown>
+    <textarea data-template>
+      `_move` method <br>
+      `_move` method does one main thing: caculate x / y position movement distance.
+    </textarea>
+  </section>
+  <section data-markdown>
+    <textarea data-template>
+      `_end` method.
+    </textarea>
+  </section>
+  <section data-markdown>
+    <textarea data-template>
+      In `_end` method, we caculate momentum distance according to moved distance. <br>
+      Momentum movement is also based on `scrollTo` method.
+    </textarea>
+  </section>
+  <section data-markdown>
+    In `_resize` method, we refresh page using `refresh` method.
+  </section>
+  <section data-markdown>
+    In `refresh` method, we initialise some properties which mainly about position and dimensions.
+  </section>
+  <section data-markdown>
+    <textarea data-template>
+      Now, it all about the most core part of `iScroll`. <br>
+      It is not as complicated as we imagination, right?
+    </textarea>
+  </section>
+ </section>
