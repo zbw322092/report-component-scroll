@@ -12,7 +12,8 @@ io = io(server);
 
 var opts = {
 	port: process.env.PORT || 1948,
-	baseDir : __dirname + '/../../'
+	baseDir : __dirname + '/../../',
+	presentationDir: __dirname + '/../../presentation'
 };
 
 io.on( 'connection', function( socket ) {
@@ -29,10 +30,12 @@ io.on( 'connection', function( socket ) {
 	app.use('/' + dir, staticDir(opts.baseDir + dir));
 });
 
-app.get("/", function(req, res) {
+app.get("/*", function(req, res) {
 	res.writeHead(200, {'Content-Type': 'text/html'});
-
-	var stream = fs.createReadStream(opts.baseDir + '/index.html');
+	let reqPath = req.path;
+	console.log(reqPath);
+	// var stream = fs.createReadStream(opts.baseDir + '/index.html');
+	var stream = fs.createReadStream(opts.presentationDir + reqPath);
 	stream.on('error', function( error ) {
 		res.write('<style>body{font-family: sans-serif;}</style><h2>reveal.js multiplex server.</h2><a href="/token">Generate token</a>');
 		res.end();

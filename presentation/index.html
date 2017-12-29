@@ -1,84 +1,106 @@
 <!doctype html>
 <html>
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<title>reveal.js</title>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<link rel="stylesheet" href="../css/reveal.css">
-		<link rel="stylesheet" href="../css/theme/black.css">
-		<link rel="stylesheet" href="./styles/common.css">
+	<title>reveal.js</title>
 
-		<!-- Theme used for syntax highlighting of code -->
-    <link rel="stylesheet" href="../lib/css/zenburn.css">
+	<link rel="stylesheet" href="../css/reveal.css">
+	<link rel="stylesheet" href="../css/theme/black.css">
+	<link rel="stylesheet" href="./styles/common.css">
 
-		<link rel="import" href="cover.html">
-		<link rel="import" href="topic-1.html">
-		<link rel="import" href="topic-2.html">
-		<link rel="import" href="topic-3.html">
-		<link rel="import" href="topic-4.html">
-		<link rel="import" href="topic-5.html">
-		<link rel="import" href="topic-6.html">
-		<link rel="import" href="topic-7.html">
-		<link rel="import" href="topic-8.html">
-		<link rel="import" href="topic-9.html">
-		<link rel="import" href="topic-10.html">
-		<link rel="import" href="topic-11.html">
-		<link rel="import" href="topic-12.html">
-		<link rel="import" href="topic-about-lib.html">
-		<link rel="import" href="topic-end.html">
+	<!-- Theme used for syntax highlighting of code -->
+	<link rel="stylesheet" href="../lib/css/zenburn.css">
 
-		<!-- Printing and PDF exports -->
-		<script>
-			var link = document.createElement( 'link' );
-			link.rel = 'stylesheet';
-			link.type = 'text/css';
-			link.href = window.location.search.match( /print-pdf/gi ) ? '../css/print/pdf.css' : '../css/print/paper.css';
-			document.getElementsByTagName( 'head' )[0].appendChild( link );
-		</script>
-  </head>
-  
-	<body>
+	<link rel="import" href="./cover.html">
+	<link rel="import" href="./topic-1.html">
+	<link rel="import" href="./topic-2.html">
+	<link rel="import" href="./topic-3.html">
+	<link rel="import" href="./topic-4.html">
+	<link rel="import" href="./topic-5.html">
+	<link rel="import" href="./topic-6.html">
+	<link rel="import" href="./topic-7.html">
+	<link rel="import" href="./topic-8.html">
+	<link rel="import" href="./topic-9.html">
+	<link rel="import" href="./topic-10.html">
+	<link rel="import" href="./topic-11.html">
+	<link rel="import" href="./topic-12.html">
+	<link rel="import" href="./topic-about-lib.html">
+	<link rel="import" href="./topic-end.html">
 
-    <!-- main content container -->
-		<div class="reveal">
-			<div class="slides"></div>
-		</div>
+	<!-- Printing and PDF exports -->
+	<script>
+		var link = document.createElement('link');
+		link.rel = 'stylesheet';
+		link.type = 'text/css';
+		link.href = window.location.search.match(/print-pdf/gi) ? '../css/print/pdf.css' : '../css/print/paper.css';
+		document.getElementsByTagName('head')[0].appendChild(link);
+	</script>
+</head>
 
-		<script src="../lib/js/head.min.js"></script>
-		<script src="../js/reveal.js"></script>
+<body>
 
-		<script>
-			// More info about config & dependencies:
-			// - https://github.com/hakimel/reveal.js#configuration
-			// - https://github.com/hakimel/reveal.js#dependencies
-			Reveal.initialize({
-				dependencies: [
-					{ src: '../plugin/markdown/marked.js' },
-					{ src: '../plugin/markdown/markdown.js' },
-					{ src: '../plugin/notes/notes.js', async: true },
-					{ src: '../plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
-				]
-      });
-      
-      var slideContainer = document.querySelector('.slides');
+	<!-- main content container -->
+	<div class="reveal">
+		<div class="slides"></div>
+	</div>
 
-			function includeHtml (container) {
-				var docs = document.querySelectorAll('link[rel="import"]');
-				var docsLength = docs.length;
-				// var i = docsLength-1, pages=[];
-				var l = docsLength;
-				var i = 0;
-				var pages=[];
-				while ( i < l ) {
-					var page = docs[i].import.querySelector('#page');
-					container.appendChild(page);
-					i++;
-				}
+	<script src="../lib/js/head.min.js"></script>
+	<script src="../js/reveal.js"></script>
+
+	<script>
+		var link = document.createElement('link');
+		link.rel = 'stylesheet';
+		link.type = 'text/css';
+		link.href = window.location.search.match(/print-pdf/gi) ? '../css/print/pdf.css' : '../css/print/paper.css';
+		document.getElementsByTagName('head')[0].appendChild(link);
+
+
+		// More info about config & dependencies:
+		// - https://github.com/hakimel/reveal.js#configuration
+		// - https://github.com/hakimel/reveal.js#dependencies
+		Reveal.initialize({
+
+			multiplex: {
+				// Example values. To generate your own, see the socket.io server instructions.
+				secret: '15145306307263355519', // Obtained from the socket.io server. Gives this (the master) control of the presentation
+				id: '3fb5c94e1c2ab240', // Obtained from socket.io server
+				url: 'localhost:1948' // Location of your socket.io server
+			},
+
+
+			dependencies: [
+				{ src: '../plugin/markdown/marked.js' },
+				{ src: '../plugin/markdown/markdown.js' },
+				{ src: '../plugin/notes/notes.js', async: true },
+				{ src: '../plugin/highlight/highlight.js', async: true, callback: function () { hljs.initHighlightingOnLoad(); } },
+
+				{ src: '//cdn.socket.io/socket.io-1.3.5.js', async: true },
+				{ src: '../plugin/multiplex/master.js', async: true },
+				{ src: '../plugin/multiplex/client.js', async: true }
+			]
+		});
+
+		var slideContainer = document.querySelector('.slides');
+
+		function includeHtml(container) {
+			var docs = document.querySelectorAll('link[rel="import"]');
+			var docsLength = docs.length;
+			// var i = docsLength-1, pages=[];
+			var l = docsLength;
+			var i = 0;
+			var pages = [];
+			while (i < l) {
+				var page = docs[i].import.querySelector('#page');
+				container.appendChild(page);
+				i++;
 			}
+		}
 
-			includeHtml(slideContainer);
-		</script>
-	</body>
+		includeHtml(slideContainer);
+	</script>
+</body>
+
 </html>
